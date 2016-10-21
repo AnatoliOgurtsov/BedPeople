@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -81,9 +82,28 @@ public class MainActivity extends AppCompatActivity {
 
     private void initNavigationView() {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigationView_open, R.string.navigationView_close);
+        drawerLayout.setDrawerListener(toggle);
+        toggle.syncState();
+
         navigationView = (NavigationView) drawerLayout.findViewById(R.id.navigation);
         navigationView.inflateMenu(R.menu.menu_navigation);
-
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(MenuItem item) {
+                drawerLayout.closeDrawers();
+                switch (item.getItemId()){
+                    case (R.id.all):
+                        showTabAll();
+                    break;
+                    case (R.id.my):
+                        showTabMy();
+                    break;
+                }
+                return true;
+            }
+        });
     }
 
     private void initTabLayout() {
@@ -94,6 +114,13 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tablayout);
         tabLayout.setupWithViewPager(viewPager);
 
+    }
+
+    private void showTabAll() {
+        viewPager.setCurrentItem(Constants.OTHERCONST.TAB1);
+    }
+    private void showTabMy() {
+        viewPager.setCurrentItem(Constants.OTHERCONST.TAB2);
     }
 
     public FaceList mock_myData() {
