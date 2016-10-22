@@ -21,6 +21,10 @@ public class MyAdapter extends RecyclerView.Adapter <MyAdapter.ViewHolder>{
     public MyAdapter(FaceList myData) {
         m_myData = myData;
     }
+
+    public MyAdapter() {
+    }
+
     @Override
     public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item, parent, false);

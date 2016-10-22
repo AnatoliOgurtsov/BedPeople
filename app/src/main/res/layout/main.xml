@@ -48,17 +48,10 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             ></android.support.v4.view.ViewPager>
 
-    <include layout="@layout/content_main"/>
+
     </LinearLayout>
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:src="@drawable/account_plus"
-        android:onClick="insertInTable"/>
+
 
 </android.support.design.widget.CoordinatorLayout>
 
@@ -68,7 +61,5 @@
         android:layout_height="match_parent"
         android:layout_gravity = "start"
         app:headerLayout="@layout/header"
-
         />
-
 </android.support.v4.widget.DrawerLayout>
