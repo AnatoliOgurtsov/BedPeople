@@ -1,14 +1,17 @@
 package by.a_ogurtsov.bedpeoples.Entity;
 
+import java.util.Date;
+
 public class Face {
     private Long id;
     private String name;
-    private String adress;
+    private String country;
+    private String city;
     private String phone;
-
-    public Face() {
-
-            }
+    private String whatdidhedo;
+    private String user;
+    private String password;
+    private Date date;
 
     public Long getId() {
         return id;
@@ -26,12 +29,20 @@ public class Face {
         this.name = name;
     }
 
-    public String getAdress() {
-        return adress;
+    public String getCountry() {
+        return country;
     }
 
-    public void setAdress(String adress) {
-        this.adress = adress;
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getPhone() {
@@ -41,4 +52,42 @@ public class Face {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    public String getWhatdidhedo() {
+        return whatdidhedo;
+    }
+
+    public void setWhatdidhedo(String whatdidhedo) {
+        this.whatdidhedo = whatdidhedo;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Face() {
+
+            }
+
+
 }

@@ -3,27 +3,27 @@ package by.a_ogurtsov.bedpeoples.Fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import by.a_ogurtsov.bedpeoples.Adapters.MyAdapter;
-import by.a_ogurtsov.bedpeoples.AsyncTasks.MyAsyncTaskAll;
-import by.a_ogurtsov.bedpeoples.Entity.Face;
-import by.a_ogurtsov.bedpeoples.Entity.FaceList;
+import by.a_ogurtsov.bedpeoples.AsyncTasks.MyAsyncTaskViewAll;
 import by.a_ogurtsov.bedpeoples.R;
 
 public class FragmentAll extends AbstractFragment{
     private static final int LAYOUT = R.layout.fragment_all;
+    private Context context;
 
     private RecyclerView recyclerView;
     private RecyclerView.LayoutManager layoutManager;
     private MyAdapter adapter;
-    private MyAsyncTaskAll myAsyncTaskAll;
-    private FaceList myData;
+    private MyAsyncTaskViewAll myAsyncTaskAll;
+
     public static FragmentAll getInstance(Context context) {
         Bundle args = new Bundle();
         FragmentAll fragment = new FragmentAll();
@@ -43,30 +43,19 @@ public class FragmentAll extends AbstractFragment{
         recyclerView.setLayoutManager(layoutManager);
         adapter = new MyAdapter(mock_myData());
         recyclerView.setAdapter(adapter);
-        myAsyncTaskAll = new MyAsyncTaskAll(adapter);
+        myAsyncTaskAll = new MyAsyncTaskViewAll(adapter, context);
+
+        if (isOnline())
         myAsyncTaskAll.execute();
+        else {Toast toast = Toast.makeText(this.getActivity(), "Отсутствует подключение к интернету\n    " +
+                                                       "Пожалуйста, проверте настройки", Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.show();}
 
 
 
-        return view;
+    return view;
 
-    }
-
-    public FaceList mock_myData() {
-        myData = new FaceList();
-        Face face1 = new Face();
-        face1.setId((long) 1);
-        face1.setName("Gitlerr");
-        face1.setAdress("Berlin");
-        face1.setPhone("666");
-        Face face2 = new Face();
-        face2.setId((long) 2);
-        face2.setName("Stalinn");
-        face2.setAdress("Moscow");
-        face2.setPhone("555");
-        myData.add(face1);
-        myData.add(face2);
-        return  myData;
     }
 
 

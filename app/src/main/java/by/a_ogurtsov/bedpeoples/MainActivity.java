@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private TabLayout tabLayout;
 
-
+    private Context context;
 
 
     @Override
@@ -37,10 +37,10 @@ public class MainActivity extends AppCompatActivity {
         initTabLayout();
 
 
-        }
+    }
 
     private void initToolbar() {
-        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle(R.string.app_name);
        /* toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
@@ -72,13 +72,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
                 drawerLayout.closeDrawers();
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case (R.id.all):
                         showTabAll();
-                    break;
+                        break;
                     case (R.id.my):
                         showTabMy();
-                    break;
+                        break;
                 }
                 return true;
             }
@@ -98,13 +98,9 @@ public class MainActivity extends AppCompatActivity {
     private void showTabAll() {
         viewPager.setCurrentItem(Constants.OTHERCONST.TAB1);
     }
+
     private void showTabMy() {
         viewPager.setCurrentItem(Constants.OTHERCONST.TAB2);
     }
-
-
-
-
-
 
 }

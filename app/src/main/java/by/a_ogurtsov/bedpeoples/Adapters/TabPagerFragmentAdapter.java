@@ -15,12 +15,10 @@ import by.a_ogurtsov.bedpeoples.Fragments.FragmentMy;
 public class TabPagerFragmentAdapter extends FragmentPagerAdapter{
     private Map <Integer, AbstractFragment> tabs;
     private Context context;
-    public TabPagerFragmentAdapter(Context contex, FragmentManager fm) {
+    public TabPagerFragmentAdapter(Context context, FragmentManager fm) {
         super(fm);
-        this.context = contex;
-        tabs = new HashMap<>();
-        tabs.put(0, FragmentAll.getInstance(contex));
-        tabs.put(1, FragmentMy.getInstance(contex));
+        this.context = context;
+        inittabs(context);
 
     }
 
@@ -39,4 +37,10 @@ public class TabPagerFragmentAdapter extends FragmentPagerAdapter{
     {
         return tabs.get(position).getTITLE();
     }
+
+    private void inittabs(Context context) {
+        tabs = new HashMap<>();
+        tabs.put(0, FragmentAll.getInstance(context));
+        tabs.put(1, FragmentMy.getInstance(context));
+          }
 }

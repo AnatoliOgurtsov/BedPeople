@@ -11,26 +11,34 @@ import by.a_ogurtsov.bedpeoples.Constants;
 import by.a_ogurtsov.bedpeoples.Entity.Face;
 import by.a_ogurtsov.bedpeoples.Entity.FaceList;
 
-public class MyAsyncTaskInsert extends AsyncTask <Face, Void, FaceList>{
-    private Face my_Face;
+
+public class MyAsyncTaskViewMy extends AsyncTask<Long, Void, FaceList>{
     private MyAdapter myAdapter;
-   public MyAsyncTaskInsert(Face face, MyAdapter myAdapter){
-       my_Face = face;
-       this.myAdapter = myAdapter;
-   }
+    private String user;
 
-    @Override
-    protected FaceList doInBackground(Face... params) {
-        RestTemplate template = new RestTemplate();
-        template.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
-        template.postForObject(Constants.URL.SAVE_ITEM, my_Face, Face.class);
-
-        return template.getForObject(Constants.URL.GET_PEOPLE, FaceList.class);
+    public MyAsyncTaskViewMy(String user, MyAdapter myAdapter) {
+    this.user = user;
+    this.myAdapter = myAdapter;
     }
 
     @Override
-    protected void onPostExecute(FaceList faces) {
-        myAdapter.setM_myData(faces);
+    protected FaceList doInBackground(Long... params) {
+        RestTemplate template = new RestTemplate();
+        template.getMessageConverters().add(new MappingJackson2HttpMessageConverter());
+
+        return  template.getForObject(Constants.URL.GET_PEOPLE, FaceList.class);
+    }
+
+    @Override
+    protected void onPostExecute(FaceList faceList) {
+        FaceList faceList_sort = new FaceList();
+        for (Face face : faceList) {
+
+        if (face.getUser().equals(user)) {
+                faceList_sort.add(face);
+            }
+        }
+        myAdapter.setM_myData(faceList_sort);
         myAdapter.notifyDataSetChanged();
     }
 }
