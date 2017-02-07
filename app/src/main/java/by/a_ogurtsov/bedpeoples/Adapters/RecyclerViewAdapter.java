@@ -7,27 +7,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import by.a_ogurtsov.bedpeoples.Entity.Face;
 import by.a_ogurtsov.bedpeoples.Entity.FaceList;
 import by.a_ogurtsov.bedpeoples.R;
 
-public class MyAdapter extends RecyclerView.Adapter <MyAdapter.ViewHolder>{
+public class RecyclerViewAdapter extends RecyclerView.Adapter <RecyclerViewAdapter.ViewHolder>{
     private FaceList m_myData;
 
-    public void setM_myData(FaceList m_myData) {
-        this.m_myData = m_myData;
 
-    }
 
-    public MyAdapter(FaceList myData) {
+    public RecyclerViewAdapter(FaceList myData) {
         m_myData = myData;
     }
 
-    public MyAdapter() {
+    public RecyclerViewAdapter() {
     }
 
     @Override
-    public MyAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_item, parent, false);
         ViewHolder vh = new ViewHolder(v);
         return vh;
@@ -73,5 +69,12 @@ public class MyAdapter extends RecyclerView.Adapter <MyAdapter.ViewHolder>{
     @Override
     public int getItemCount() {
         return m_myData.size();
+    }
+    public void setM_myData(FaceList m_myData) {
+        this.m_myData = m_myData;
+    }
+
+    public FaceList getM_myData() {
+        return m_myData;
     }
 }

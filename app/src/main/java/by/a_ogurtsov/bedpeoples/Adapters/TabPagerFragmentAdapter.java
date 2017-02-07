@@ -19,9 +19,7 @@ public class TabPagerFragmentAdapter extends FragmentPagerAdapter{
         super(fm);
         this.context = context;
         inittabs(context);
-
     }
-
     @Override
     public Fragment getItem(int position) {
        return tabs.get(position);
@@ -43,4 +41,5 @@ public class TabPagerFragmentAdapter extends FragmentPagerAdapter{
         tabs.put(0, FragmentAll.getInstance(context));
         tabs.put(1, FragmentMy.getInstance(context));
           }
+
 }

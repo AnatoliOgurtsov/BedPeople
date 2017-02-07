@@ -6,15 +6,15 @@ import android.os.AsyncTask;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
-import by.a_ogurtsov.bedpeoples.Adapters.MyAdapter;
+import by.a_ogurtsov.bedpeoples.Adapters.RecyclerViewAdapter;
 import by.a_ogurtsov.bedpeoples.Constants;
 import by.a_ogurtsov.bedpeoples.Entity.FaceList;
 import by.a_ogurtsov.bedpeoples.Entity.Id;
 
 public class MyAsyncTaskDeleteItem extends AsyncTask <String, Void, FaceList> {
     long id;
-    private MyAdapter myAdapter;
-    public MyAsyncTaskDeleteItem(long id, MyAdapter myAdapter) {
+    private RecyclerViewAdapter myAdapter;
+    public MyAsyncTaskDeleteItem(long id, RecyclerViewAdapter myAdapter) {
         this.id = id;
         this.myAdapter = myAdapter;
     }

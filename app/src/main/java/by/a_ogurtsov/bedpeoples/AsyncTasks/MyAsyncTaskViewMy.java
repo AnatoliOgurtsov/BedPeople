@@ -6,17 +6,18 @@ import android.os.AsyncTask;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
-import by.a_ogurtsov.bedpeoples.Adapters.MyAdapter;
+import by.a_ogurtsov.bedpeoples.Adapters.RecyclerViewAdapter;
 import by.a_ogurtsov.bedpeoples.Constants;
 import by.a_ogurtsov.bedpeoples.Entity.Face;
 import by.a_ogurtsov.bedpeoples.Entity.FaceList;
 
 
 public class MyAsyncTaskViewMy extends AsyncTask<Long, Void, FaceList>{
-    private MyAdapter myAdapter;
+    private RecyclerViewAdapter myAdapter;
     private String user;
+    static public FaceList faceList_sort;
 
-    public MyAsyncTaskViewMy(String user, MyAdapter myAdapter) {
+    public MyAsyncTaskViewMy(String user, RecyclerViewAdapter myAdapter) {
     this.user = user;
     this.myAdapter = myAdapter;
     }
@@ -31,7 +32,7 @@ public class MyAsyncTaskViewMy extends AsyncTask<Long, Void, FaceList>{
 
     @Override
     protected void onPostExecute(FaceList faceList) {
-        FaceList faceList_sort = new FaceList();
+        faceList_sort = new FaceList();
         for (Face face : faceList) {
 
         if (face.getUser().equals(user)) {

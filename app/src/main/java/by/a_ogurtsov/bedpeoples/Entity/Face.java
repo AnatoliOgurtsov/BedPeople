@@ -5,8 +5,10 @@ import java.util.Date;
 public class Face {
     private Long id;
     private String name;
+    private String surname;
     private String country;
     private String city;
+    private String address;
     private String phone;
     private String whatdidhedo;
     private String user;
@@ -21,6 +23,7 @@ public class Face {
         this.id = id;
     }
 
+
     public String getName() {
         return name;
     }
@@ -28,6 +31,13 @@ public class Face {
     public void setName(String name) {
         this.name = name;
     }
+
+    public void setSurname(String surname) { this.surname = surname;}
+
+    public String getSurname() {
+        return surname;
+    }
+
 
     public String getCountry() {
         return country;
@@ -37,6 +47,7 @@ public class Face {
         this.country = country;
     }
 
+
     public String getCity() {
         return city;
     }
@@ -44,6 +55,14 @@ public class Face {
     public void setCity(String city) {
         this.city = city;
     }
+
+
+    public String getAddress() { return address;  }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
 
     public String getPhone() {
         return phone;
@@ -53,6 +72,7 @@ public class Face {
         this.phone = phone;
     }
 
+
     public String getWhatdidhedo() {
         return whatdidhedo;
     }
@@ -61,13 +81,13 @@ public class Face {
         this.whatdidhedo = whatdidhedo;
     }
 
-    public String getUser() {
-        return user;
-    }
+
+    public String getUser() { return user; }
 
     public void setUser(String user) {
         this.user = user;
     }
+
 
     public String getPassword() {
         return password;
@@ -77,6 +97,7 @@ public class Face {
         this.password = password;
     }
 
+
     public Date getDate() {
         return date;
     }
@@ -84,6 +105,8 @@ public class Face {
     public void setDate(Date date) {
         this.date = date;
     }
+
+
 
     public Face() {
 

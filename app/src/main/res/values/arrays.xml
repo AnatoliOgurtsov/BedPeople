@@ -3,5 +3,7 @@
     <string-array name="tabs">
     <item>Показать всех</item>
     <item>Показать моих</item>
-</string-array>
+    </string-array>
+
+
 </resources>
